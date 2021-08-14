@@ -8,6 +8,5 @@ resolver = "2"
 
 [dependencies]
 wgpu = { git = "https://github.com/gfx-rs/wgpu.git", branch = "master" }
-winit = "*"
 pollster = "*"
 env_logger = "*"

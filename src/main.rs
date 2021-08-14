@@ -1,15 +1,9 @@
 use pollster::block_on;
-use winit::event_loop::EventLoop;
-use winit::window::Window;
 
 fn main() {
     env_logger::init();
 
-    let event_loop = EventLoop::new();
-    let window = Window::new(&event_loop).expect("window creation failed");
-
     let instance = wgpu::Instance::new(wgpu::Backends::GL);
-    let surface = unsafe { instance.create_surface(&window) };
     let adapter =
         block_on(instance.request_adapter(&Default::default())).expect("adapter creation failed");
     let (device, queue) = block_on(adapter.request_device(&Default::default(), None))
