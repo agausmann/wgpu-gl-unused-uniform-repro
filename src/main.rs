@@ -6,7 +6,7 @@ fn main() {
     let instance = wgpu::Instance::new(wgpu::Backends::GL);
     let adapter =
         block_on(instance.request_adapter(&Default::default())).expect("adapter creation failed");
-    let (device, queue) = block_on(adapter.request_device(&Default::default(), None))
+    let (device, _queue) = block_on(adapter.request_device(&Default::default(), None))
         .expect("device creation failed");
 
     let shader_module = device.create_shader_module(&wgpu::include_wgsl!("shader.wgsl"));
@@ -31,7 +31,7 @@ fn main() {
         push_constant_ranges: &[],
     });
 
-    let render_pipeline = device.create_render_pipeline(&wgpu::RenderPipelineDescriptor {
+    let _render_pipeline = device.create_render_pipeline(&wgpu::RenderPipelineDescriptor {
         label: None,
         layout: Some(&pipeline_layout),
         vertex: wgpu::VertexState {
