@@ -1,14 +1,9 @@
-[[group(0), binding(1)]]
-var t_sampler: sampler;
-[[group(0), binding(2)]]
-var texture: texture_2d<f32>;
-
 [[block]]
 struct Viewport {
     proj: mat4x4<f32>;
 };
 
-[[group(1), binding(0)]]
+[[group(0), binding(0)]]
 var<uniform> viewport: Viewport;
 
 struct VertexInput {
@@ -31,6 +26,5 @@ fn main(in: VertexInput) -> VertexOutput {
 
 [[stage(fragment)]]
 fn main(in: VertexOutput) -> [[location(0)]] vec4<f32> {
-    //var _: mat4x4<f32> = viewport.proj;
-    return textureSample(texture, t_sampler, in.uv);
+    return vec4<f32>(0.0, 0.0, 0.0, 1.0);
 }
